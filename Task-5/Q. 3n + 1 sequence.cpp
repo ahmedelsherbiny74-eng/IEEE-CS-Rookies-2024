@@ -2,18 +2,19 @@
 #include <iostream>
 using namespace std;
  
-int collatz_loop(int n, int c);
+int collatz_loop(int n);
  
 int main() 
 {
-    int c = 0;
     int n;
     cin>>n;
-    collatz_loop(n, c);
+    collatz_loop(n);
 }
  
-int collatz_loop(int n, int c)
+int collatz_loop(int n)
 {
+    static int c = 0;
+    
     if (n == 1)
     {
         c++;
@@ -22,11 +23,11 @@ int collatz_loop(int n, int c)
     else if (n % 2 == 0)
     {
         c++;
-        return collatz_loop(n / 2, c);
+        return collatz_loop(n / 2);
     }
     else
     {
         c++;
-        return collatz_loop(3 * n + 1, c);
+        return collatz_loop(3 * n + 1);
     }
 }
